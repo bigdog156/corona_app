@@ -1,3 +1,3 @@
 abstract class CoronaEvent {}
 
-class GetCoronaEvetn extends CoronaEvent{}
+class GetCoronaEvent extends CoronaEvent{}

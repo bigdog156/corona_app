@@ -1,7 +1,8 @@
 import 'package:corona_app/model/export_model.dart';
 abstract class CoronaState{}
 
-class GetCoronaJ2UnInitial extends CoronaState{}
+class GetCoronaJ2UnInitial extends CoronaState{
+}
 
 class GetCoronaJ2Loading extends CoronaState{}
 

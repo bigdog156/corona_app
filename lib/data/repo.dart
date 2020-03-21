@@ -2,7 +2,7 @@ import 'remote.dart';
 import 'package:corona_app/model/export_model.dart';
 class CoronaRepositoryAll {
   CoronaAPI _api = CoronaAPI();
-  Future<CoronaAll> getCoronaAll() async{
+  Future<List<CoronaAll>> getCoronaAll() async{
     return _api.getCoronaAll();
   }
 }

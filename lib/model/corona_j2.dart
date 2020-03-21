@@ -36,6 +36,7 @@ class Data {
     this.global,
     this.vietnam,
   });
+
   factory Data.fromJson(Map<String, dynamic> json) => Data(
     global: Global.fromJson(json["global"]),
     vietnam: Global.fromJson(json["vietnam"]),
