@@ -23,7 +23,27 @@ class _HomePageState extends State<HomePage> {
   }
   @override
   Widget build(BuildContext context) {
-    _getCoronaJ2Bloc.add(GetCoronaEvent());
+    return BlocProvider(
+      create: (context) => _getCoronaJ2Bloc,
+      child: BlocBuilder(
+        bloc: _getCoronaJ2Bloc,
+        builder: (context, CoronaState state){
+          if(state is GetCoronaJ2UnInitial){
+            _getCoronaJ2Bloc.add(GetCoronaEvent());
+            return Container(
+              child: Text("Init"),
+            );
+          }else if (state is GetCoronaJ2Loading){
+            return Center(child:CircularProgressIndicator());
+          }else if (state is GetCoronaJ2Success){
+            return successPage(state.coronaJ2);
+          }
+          return Container(
+            child: Text("Error"),
+          );
+        },
+      ),
+    );
     return BlocProvider(
       create: (context) => _getCoronaJ2Bloc,
       child: Scaffold(
@@ -55,6 +75,7 @@ class _HomePageState extends State<HomePage> {
           bloc: _getCoronaJ2Bloc,
           builder: (context, CoronaState state){
             if(state is GetCoronaJ2UnInitial){
+              _getCoronaJ2Bloc.add(GetCoronaEvent());
               return Container(
                 child: Text("Init"),
               );

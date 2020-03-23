@@ -19,6 +19,10 @@ class CoronaAll {
   int critical;
   int casesPerOneMillion;
 
+  static List<CoronaAll> parseProductList(map) {
+    var list = map as List;
+    return list.map((product) => CoronaAll.fromJson(product)).toList();
+  }
   CoronaAll({
     this.country,
     this.cases,

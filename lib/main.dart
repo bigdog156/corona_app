@@ -1,4 +1,5 @@
-import 'package:corona_app/module/home_page.dart';
+
+import 'package:corona_app/module/main_page.dart';
 import 'package:flutter/material.dart';
 import 'share/material_color.dart';
 void main() => runApp(MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: colorCustom,
       ),
-      home: HomePage(),
+      home: PageMain(),
     );
   }
 }

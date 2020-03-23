@@ -4,12 +4,11 @@ class CoronaAPI {
   final String urlCoronaAll = "https://corona.lmao.ninja/countries";
   final String urlCoronaJ2 =
       "https://code.junookyo.xyz/api/ncov-moh/data.json?fbclid=IwAR2wVEu2v8UejEtqDZAqcF1Ji8DHtlxoY8PmeVK-BIMjS2j36HKtfcUgr8o";
-  final String urlDateTime = "http://worldclockapi.com/api/json/utc/now";
   final Dio _dio = Dio();
-  Future<List<CoronaAll>> getCoronaAll() async {
+  Future<Response> getCoronaAll() async {
     try{
       Response response = await _dio.get(urlCoronaAll);
-      return coronaAllFromJson(response.data);
+      return response;
     }catch (error){
       print("ERROR IN CoronaAll: "+error);
     }
