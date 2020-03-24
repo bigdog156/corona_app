@@ -7,7 +7,10 @@ class PageMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hello"),
+        title: Text("COVID - 19", style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold
+        ),),
       ),
       body: ListView(
         children: <Widget>[

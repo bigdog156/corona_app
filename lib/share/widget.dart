@@ -1,3 +1,5 @@
+import 'package:corona_app/share/export_share.dart';
+import 'package:corona_app/share/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:corona_app/model/export_model.dart';
@@ -19,15 +21,13 @@ class ItemTotal extends StatelessWidget {
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width*0.7,
+                left: MediaQuery.of(context).size.width * 0.7,
                 top: 5,
-                bottom: 5
-            ),
+                bottom: 5),
             alignment: Alignment.center,
             color: Theme.of(context).primaryColor,
             height: 20,
-            child: Text(
-                dateTime.hour.toString() +
+            child: Text(dateTime.hour.toString() +
                 "h ngày " +
                 dateTime.day.toString() +
                 "-" +
@@ -64,9 +64,9 @@ class ItemTotal extends StatelessWidget {
 }
 
 class CoronaMap extends StatelessWidget {
-
   final List<CoronaAll> listCorona;
   final DateTime dateTime = new DateTime.now();
+
   CoronaMap({this.listCorona});
 
   @override
@@ -79,19 +79,17 @@ class CoronaMap extends StatelessWidget {
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width*0.7,
+                left: MediaQuery.of(context).size.width * 0.7,
                 top: 5,
-                bottom: 5
-            ),
+                bottom: 5),
             alignment: Alignment.center,
             color: Theme.of(context).primaryColor,
             height: 20,
-            child: Text(
-                dateTime.hour.toString() +
-                    "h ngày " +
-                    dateTime.day.toString() +
-                    "-" +
-                    dateTime.month.toString()),
+            child: Text(dateTime.hour.toString() +
+                "h ngày " +
+                dateTime.day.toString() +
+                "-" +
+                dateTime.month.toString()),
           ),
           Container(
               width: MediaQuery.of(context).size.width,
@@ -106,17 +104,31 @@ class CoronaMap extends StatelessWidget {
                     "assets/world.jpg",
                     fit: BoxFit.cover,
                   ),
+                  Positioned(
+                    left: 20,
+                    bottom: 20,
+                    width: 90,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          listCorona.length.toString(),
+                          style: titleText(),
+                        ),
+                        Text(
+                          "QUỐC GIA & VÙNG LÃNH THỔ",
+                          style: miniTitleText(),
+                        )
+                      ],
+                    ),
+                  )
                 ],
               )),
-          Text(
-            "Số nước trên Thế giới:",
-            style: TextStyle(color: Colors.black, fontSize: 18),
-          ),
-          Text(
-            listCorona.length.toString(),
-            style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
-          ),
+          ShowInfo( number: listCorona[0].cases,ex: info.F1,),
+          SizedBox(height: 10),
+          ShowInfo(number: listCorona[0].deaths, ex: info.F2,),
+          SizedBox(height: 10),
+          ShowInfo(number: listCorona[0].recovered, ex: info.F3,)
         ],
       ),
     );

@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:corona_app/model/export_model.dart';
 import 'dart:core';
 import 'state.dart';
-import 'package:corona_app/share/widget.dart';
+import 'package:corona_app/share/export_share.dart';
 class CoronaAllPage extends StatefulWidget {
   @override
   _CoronaAllState createState() => _CoronaAllState();
@@ -37,7 +37,7 @@ class _CoronaAllState extends State<CoronaAllPage> {
             }else if(state is GetCoronaLoading){
               return Container (
                 child:
-                  CircularProgressIndicator()
+                  Text("Loading ... ")
               );
             }else if (state is GetCoronaSuccess){
               return coronaPageView(state.list);
@@ -55,10 +55,6 @@ Widget coronaPageView(List<CoronaAll> list){
   return Container(
     child: Column(
       children: <Widget>[
-        Text(list.length.toString()),
-        Text(list[0].country),
-        Text(list[192].country),
-        Text(list[192].cases.toString()),
         CoronaMap(listCorona: list),
       ],
     ),
